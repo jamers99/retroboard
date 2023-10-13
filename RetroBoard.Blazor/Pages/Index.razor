@@ -1,7 +1,52 @@
 ﻿@page "/{Team}"
 @inject IDataAccess DataAccess;
 
+<style>
+    .bounds {
+        width: 100%;
+        height: 100%;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        -webkit-overflow-scrolling: touch;
+    }
 
+    .wrapbox {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        /* width: 2500px; */
+        height: 100%;
+        text-align: center;
+    }
+
+
+    .card {
+        width: 300px;
+        vertical-align: middle;
+        background: rgba(120, 30, 20, 0.5);
+        padding: 10px;
+        margin: 30px 0px 30px 30px;
+    }
+</style>
+
+<div class="bounds">
+    @foreach (var column in Board.Columns)
+    {
+        <div class="wrapbox">
+            <div class="column-header">@column.Name</div>
+            @foreach (var card in column.Cards)
+            {
+                <div class="card">
+                    <div class="title">@card.Title</div>
+                </div>
+            }
+        </div>
+    }
+</div>
 
 @code {
     [Parameter] public string? Team { get; set; }
@@ -12,9 +57,6 @@
     {
         if (Team == null)
             throw new ArgumentNullException(nameof(Team));
-
-        if (Board != null)
-            return;
 
         Board = await DataAccess.LoadBoardAsync(Team);
 
