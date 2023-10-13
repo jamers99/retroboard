@@ -1,13 +1,18 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 using RetroBoard;
 using RetroBoard.Azure;
+using RetroBoard.Blazor.Demo;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton(builder.Configuration.GetSection("Azure").Get<AzureSettings>()!);
-builder.Services.AddSingleton<IDataAccess, AzureDataAccess>();
+
+#if DEBUG
+if (Environment.GetEnvironmentVariable("ENABLE_DEMO") == "True")
+    builder.Services.AddSingleton<IDataAccess, DemoDataAccess>();
+else
+#endif
+    builder.Services.AddSingleton<IDataAccess, AzureDataAccess>();
 
 var app = builder.Build();
 
