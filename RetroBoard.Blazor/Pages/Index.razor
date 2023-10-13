@@ -13,6 +13,9 @@
         if (Team == null)
             throw new ArgumentNullException(nameof(Team));
 
+        if (Board != null)
+            return;
+
         Board = await DataAccess.LoadBoardAsync(Team);
 
         if (Board == null)

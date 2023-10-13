@@ -8,7 +8,7 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton(builder.Configuration.GetSection("Azure").Get<AzureSettings>()!);
 
 #if DEBUG
-if (Environment.GetEnvironmentVariable("ENABLE_DEMO") == "True")
+if (string.IsNullOrEmpty(builder.Configuration["Azure:Url"]))
     builder.Services.AddSingleton<IDataAccess, DemoDataAccess>();
 else
 #endif
