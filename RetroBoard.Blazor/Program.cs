@@ -6,6 +6,7 @@ using RetroBoard.Azure;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+builder.Services.AddSingleton(builder.Configuration.GetSection("Azure").Get<AzureSettings>()!);
 builder.Services.AddSingleton<IDataAccess, AzureDataAccess>();
 
 var app = builder.Build();
