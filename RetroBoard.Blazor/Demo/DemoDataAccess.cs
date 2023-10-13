@@ -12,7 +12,7 @@ public class DemoDataAccess : IDataAccess
         {
             Columns = Enumerable.Range(1, 3).Select(ci => new Column
             {
-                Name = "Column {ci}",
+                Name = $"Column {ci}",
                 Cards = Enumerable.Range(1, 10).Select(wi => new Card
                 {
                     Id = wi,
