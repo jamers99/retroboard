@@ -1,4 +1,5 @@
-﻿namespace RetroBoard.Azure;
+﻿
+namespace RetroBoard.Azure;
 
 public class AzureDataAccess : IDataAccess
 {
@@ -9,4 +10,9 @@ public class AzureDataAccess : IDataAccess
     }
  
     public string Name => settings.Url;
+
+    public Task<Board> LoadBoardAsync(string team)
+    {
+        return Task.FromResult(new Board() {Team = "Blah"}); //todo
+    }
 }

@@ -1,7 +1,13 @@
-﻿@page "/"
+﻿@page "/{Team}"
 @inject IDataAccess DataAccess;
 
-<h1>Hello, @DataAccess.Name!</h1>
-
 @code {
+    [Parameter] public string Team { get; set; }
+
+    Board Board { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Board = await DataAccess.LoadBoardAsync(Team);
+    }
 }

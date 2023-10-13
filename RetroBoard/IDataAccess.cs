@@ -2,5 +2,5 @@
 
 public interface IDataAccess
 {
-    string Name { get; }
+    Task<Board> LoadBoardAsync(string team);
 }
