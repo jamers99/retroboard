@@ -2,9 +2,11 @@
 
 public class AzureDataAccess : IDataAccess
 {
-    AzureSettings _azureSettings;
+    AzureSettings settings;
     public AzureDataAccess(AzureSettings azureSettings)
     {
-        _azureSettings = azureSettings;
+        settings = azureSettings;
     }
+ 
+    public string Name => settings.Url;
 }
