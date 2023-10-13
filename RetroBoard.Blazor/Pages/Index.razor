@@ -25,22 +25,29 @@
 </style>
 
 <div class="bounds">
-    @foreach (var column in Board.Columns)
+    @if (Board == null)
     {
-        <div class="wrapbox">
-            <div class="column-header">@column.Name</div>
-            @foreach (var card in column.Cards)
-            {
-                <RetroBoard.Blazor.Components.CardComponent card="@card" />
-            }
-        </div>
+        <div>Loading...</div>
+    }
+    else
+    {
+        @foreach (var column in Board.Columns)
+        {
+            <div class="wrapbox">
+                <div class="column-header">@column.Name</div>
+                @foreach (var card in column.Cards)
+                {
+                    <RetroBoard.Blazor.Components.CardComponent card="@card" />
+                }
+            </div>
+        }
     }
 </div>
 
 @code {
     [Parameter] public string? Team { get; set; }
 
-    Board? Board { get; set; } = new Board();
+    Board? Board { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
