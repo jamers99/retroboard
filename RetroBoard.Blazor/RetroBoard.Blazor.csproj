@@ -6,7 +6,4 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\RetroBoard\RetroBoard.csproj" />
-  </ItemGroup>
 </Project>
