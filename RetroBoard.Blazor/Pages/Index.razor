@@ -1,13 +1,21 @@
 ﻿@page "/{Team}"
 @inject IDataAccess DataAccess;
 
-@code {
-    [Parameter] public string Team { get; set; }
 
-    Board Board { get; set; }
+
+@code {
+    [Parameter] public string? Team { get; set; }
+
+    Board? Board { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
+        if (Team == null)
+            throw new ArgumentNullException(nameof(Team));
+
         Board = await DataAccess.LoadBoardAsync(Team);
+
+        if (Board == null)
+            throw new ArgumentException($"Board not loaded");
     }
 }
