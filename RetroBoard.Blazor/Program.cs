@@ -1,9 +1,12 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using RetroBoard;
+using RetroBoard.Azure;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+builder.Services.AddSingleton<IDataAccess, AzureDataAccess>();
 
 var app = builder.Build();
 

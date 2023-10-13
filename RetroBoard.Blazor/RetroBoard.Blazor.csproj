@@ -9,5 +9,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RetroBoard\RetroBoard.csproj" />
+    <ProjectReference Include="..\RetroBoard.Azure\RetroBoard.Azure.csproj" />
   </ItemGroup>
 </Project>
