@@ -3,17 +3,19 @@
 
 <style>
     .bounds {
-        display: flex;
-        flex-direction: row;
+        height: 99vh;
+        overflow-x: auto;
+        overflow-y: hidden;
+        position: relative;
+        white-space: nowrap;
     }
 
-    .columns {
-        background-color: blue;
-        margin: 5px;
-        display: flex;
+    .column {
+        display: inline-flex;
         flex-wrap: wrap;
         height: 100vh;
         flex-direction: column;
+        white-space: normal;
     }
 </style>
 
@@ -26,11 +28,13 @@
     {
         @foreach (var column in Board.Columns)
         {
-            <div class="columns">
+            <div class="column">
                 <div class="column-header">@column.Name</div>
                 @foreach (var card in column.Cards)
                 {
-                    <RetroBoard.Blazor.Components.CardComponent card="@card" />
+                    <div style="margin: 30px 0px 30px 30px">
+                        <RetroBoard.Blazor.Components.CardComponent card="@card"  />
+                    </div>
                 }
             </div>
         }
