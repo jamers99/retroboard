@@ -8,8 +8,8 @@ public class Card
     public bool IsBlocked { get; init; }
     public string Color => Type switch
     {
-        CardType.Bug => "rgba(120, 30, 20, 0.5)",
-        CardType.PBI => "rgba(30, 30, 120, 0.5)",
-        _ => "rgba(200, 200, 200, 0.5)"
+        CardType.Bug => "rgb(204, 41, 61)",
+        CardType.PBI => "rgb(0, 156, 204)",
+        _ => "rgb(200, 200, 200)"
     };
 }

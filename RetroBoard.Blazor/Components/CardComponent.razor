@@ -1,13 +1,25 @@
 ﻿<style>
     .card {
-        width: 100px;
+        width: 150px;
+        height: 90px;
         vertical-align: middle;
         padding: 10px;
+        border-radius: 5px;
+        background-color: rgb(245, 238, 225);
+        border-left: 3px solid;
+    }
+
+    .title {
+        margin: 0px 0px 10px 0px;
+        word-wrap: break-word;
+        overflow: hidden;
+        text-overflow: clip;
+        height: 100%;
     }
 </style>
 
-<div class="card" style="background: @card.Color">
-    <div class="title">@card.Title</div>
+<div class="card" style="border-color: @card.Color">
+    <div class="title"><b>@card.Id</b><br/>@card.Title</div>
 </div>
 
 @code {
