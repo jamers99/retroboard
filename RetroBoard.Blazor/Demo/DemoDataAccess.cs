@@ -16,7 +16,7 @@ public class DemoDataAccess : IDataAccess
                 Cards = Enumerable.Range(1, 10).Select(wi => new Card
                 {
                     Id = wi,
-                    Title = $"Demo card {wi}",
+                    Title = $"Demo card {wi} with more of a description",
                     Type = workItemTypes[random.Next(workItemTypes.Length)]
                 }).ToList()
             }).ToList()
