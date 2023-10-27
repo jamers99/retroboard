@@ -8,6 +8,7 @@
         overflow-y: hidden;
         position: relative;
         white-space: nowrap;
+        padding: 20px;
     }
 
     .column {
@@ -16,6 +17,17 @@
         height: 100vh;
         flex-direction: column;
         white-space: normal;
+        margin: 0px 50px 0px 0px;
+    }
+
+    .column-header {
+        margin: 10px 15px 0px 10px;
+        font-family: Permanent Marker;
+        font-size: 30px
+    }
+
+    .card-bounds {
+        margin: 10px;
     }
 </style>
 
@@ -32,8 +44,8 @@
                 <div class="column-header">@column.Name</div>
                 @foreach (var card in column.Cards)
                 {
-                    <div style="margin: 30px 0px 30px 30px">
-                        <RetroBoard.Blazor.Components.CardComponent card="@card"  />
+                    <div class="card-bounds">
+                        <RetroBoard.Blazor.Components.CardComponent card="@card" />
                     </div>
                 }
             </div>
